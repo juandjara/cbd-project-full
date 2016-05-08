@@ -3,6 +3,7 @@
 angular.module('cbdProjectFullApp', [
   'cbdProjectFullApp.auth',
   'cbdProjectFullApp.admin',
+  'cbdProjectFullApp.story',  
   'cbdProjectFullApp.constants',
   'ngCookies',
   'ngResource',

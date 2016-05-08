@@ -3,8 +3,8 @@
 angular.module('cbdProjectFullApp.story')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('story', {
+      .state('stories', {
         url: '/stories',
-        template: '<story></story>'
+        template: '<stories></stories>'
       });
   });

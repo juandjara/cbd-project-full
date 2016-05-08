@@ -8,8 +8,8 @@ class StoryComponent {
 }
 
 angular.module('cbdProjectFullApp.story')
-  .component('story', {
-    templateUrl: 'app/story/story.html',
+  .component('stories', {
+    templateUrl: 'app/story/stories.html',
     controller: StoryComponent
   });
 
