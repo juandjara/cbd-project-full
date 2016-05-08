@@ -1,1 +1,13 @@
-<div>This is the story view.</div>
+<div class="container">
+  <p>This is the story list.</p>
+  <p ng-show="!vm.stories.length">No hay historias :c</p>
+  <ul class="list-group user-list">
+    <li class="list-group-item" ng-repeat="story in vm.stories">
+	    <div class="user-info">
+	        <strong>{{story.id}}</strong><br>
+	        <span class="text-muted">{{story.title}}</span>
+	    </div>
+      <a ng-click="vm.delete(story)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+    </li>
+  </ul>
+</div>
