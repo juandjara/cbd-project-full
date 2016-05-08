@@ -5,6 +5,6 @@ angular.module('cbdProjectFullApp.story')
     $stateProvider
       .state('stories', {
         url: '/stories',
-        template: '<stories></stories>'
+        template: '<story-list></story-list>'
       });
   });
