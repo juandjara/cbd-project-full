@@ -1,13 +1,22 @@
 <div class="container">
-  <p>This is the story list.</p>
+  <div layout="row">
+    <md-button ui-sref="story_edit" class="md-icon-button md-raised md-primary" 
+               uib-tooltip="Nueva historia">
+      <md-icon>add</md-icon>
+    </md-button>
+    <h3>Esta es la lista de historias.</h3>    
+  </div>
+  <md-divider class="md-padding"></md-divider>
   <p ng-show="!vm.stories.length">No hay historias :c</p>
-  <ul class="list-group user-list">
-    <li class="list-group-item" ng-repeat="story in vm.stories">
-	    <div class="user-info">
-	        <strong>{{story.id}}</strong><br>
-	        <span class="text-muted">{{story.title}}</span>
+  <ul class="list-group entity-list">
+    <li class="list-group-item" ng-repeat="story in vm.stories" ng-show="story.active || vm.userIsAdmin()">
+	    <div class="entity-info">
+	        <strong uib-tooltip="id: {{story._id}}" tooltip-placement="right">
+            {{story.name}}
+          </strong><br>
+	        <span class="text-muted">{{story.info}}</span>
 	    </div>
-      <a ng-click="vm.delete(story)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+      <a ng-click="vm.confirmDelete($event, story)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
     </li>
   </ul>
 </div>

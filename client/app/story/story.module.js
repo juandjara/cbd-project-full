@@ -3,7 +3,8 @@
   
   angular
     .module('cbdProjectFullApp.story', [
-      'ui.router'
+      'ui.router',
+      'ngMaterial'
      ]);
   
 })();

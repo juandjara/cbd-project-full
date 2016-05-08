@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>Crear historia</h1>
+  <form layout="column" class="form" name="form" novalidate>
+    <md-input-container class="md-block"
+          ng-class="{ 'has-success': form.name.$valid && vm.submitted,
+                      'has-error': form.name.$invalid && vm.submitted }">
+      
+      <label>Nombre</label>
+      <input type="text" name="name" md-no-asterisk
+             ng-model="vm.story.name" required/>
+      <div ng-messages="form.name.$error">
+        <div ng-show="form.name.$error.required" ng-message="required">
+          La historia necesita un nombre
+        </div>
+      </div>
+      
+    </md-input-container>
+    <md-input-container class="md-block"
+          ng-class="{ 'has-success': form.info.$valid && vm.submitted,
+                      'has-error': form.info.$invalid && vm.submitted }">
+      
+      <label>Descripcion</label>
+      <input type="text" name="info" md-no-asterisk
+             ng-model="vm.story.info" required/>
+      <div ng-messages="form.info.$error">
+        <div ng-show="form.info.$error.required" ng-message="required">
+          Cuentanos algo sobre tu historia
+        </div>
+      </div>
+      
+    </md-input-container>
+    <md-input-container class="md-block">
+      <md-checkbox type="checkbox" name="active" class="md-primary"
+              ng-model="vm.story.active" ng-init="vm.story.active=true">
+        Visible al público
+      </md-checkbox>
+    </md-input-container>
+    <div>
+      <input type="submit" class="lg-bg md-button md-primary" ng-click="vm.save(form)">
+      <a ui-sref="main">
+        Cancel
+      </a>
+    </div>
+
+  </form>
+  <hr>
+</div>
