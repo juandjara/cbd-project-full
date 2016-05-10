@@ -7,6 +7,7 @@ class StoryComponent {
     this.stories = Story.query();
     this.modals = $mdDialog;
     this.userIsAdmin = Auth.isAdmin;
+    this.like = Story.like;
   }
   
   delete(story) {
@@ -23,6 +24,7 @@ class StoryComponent {
                     .cancel("No");
     this.modals.show(confirm).then(() => { this.delete(story); });
   }
+  
 }
 
 angular.module('cbdProjectFullApp.story')

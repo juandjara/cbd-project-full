@@ -16,7 +16,25 @@
           </strong><br>
 	        <span class="text-muted">{{story.info}}</span>
 	    </div>
-      <a ng-click="vm.confirmDelete($event, story)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+      <a style="align-self: center; min-width: 3em;"
+         class="text-success" ng-click="vm.like(story._id)">
+        <i uib-tooltip="Like" class="fa fa-thumbs-o-up fa-2x"></i>
+        <span class="fa-2x">{{story.likes.length}} </span>
+      </a>
+      
+      <!--
+      <span style="min-width: 1em"></span>
+      <a style="align-self: center; min-width: 3em;"
+         class="text-danger" ng-click="vm.dislike(story._id)">
+        <i uib-tooltip="Dislike" class="fa fa-thumbs-o-down fa-2x"></i>
+        <span class="fa-2x">{{story.dislikes.length}} </span>
+      </a>
+      &nbsp;
+      -->
+      
+      <a style="padding-left: 1em;" ng-click="vm.confirmDelete($event, story)" class="trash">
+        <span uib-tooltip="Delete" class="fa fa-trash fa-2x"></span>
+      </a>
     </li>
   </ul>
 </div>

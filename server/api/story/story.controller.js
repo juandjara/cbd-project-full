@@ -100,3 +100,22 @@ export function destroy(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+
+// Add a "like" to a Story
+export function like(req, res){
+  console.log("storiesController.like req params" + JSON.stringify(req.params));
+  return Story
+      .findOneAndUpdate(
+         { _id: req.params.id },
+         { $addToSet: { likes: req.user._id } }
+       )
+      .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .then(function(entity){
+      
+    })
+    .catch(handleError(res));
+}
+
+
