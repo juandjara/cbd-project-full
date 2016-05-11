@@ -7,12 +7,28 @@ class StoryComponent {
     this.stories = Story.query();
     this.modals = $mdDialog;
     this.userIsAdmin = Auth.isAdmin;
-    this.like = Story.like;
+    this.Story = Story;
   }
   
-  delete(story) {
-    story.$remove();
-    this.stories.splice(this.stories.indexOf(story), 1);
+  like(story){
+    this.Story.like(story._id)
+      .then(res => {
+        this.stories.splice(this.stories.indexOf(story), 1);
+        this.stories.unshift(res.data);
+      })
+  }
+  
+  dislike(story){
+    this.Story.dislike(story._id)
+      .then(res => {
+        this.stories.splice(this.stories.indexOf(story), 1);
+        this.stories.unshift(res.data);
+      })
+  }
+  
+  delete(deleted_story) {
+    deleted_story.$remove();
+    this.stories.splice(this.stories.indexOf(deleted_story), 1);
   }
   
   confirmDelete(ev, story){

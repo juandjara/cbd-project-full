@@ -6,12 +6,18 @@ angular.module('cbdProjectFullApp.story')
       id: '@_id'
     });
     
-    service.like = like;
+    service.like    = like;
+    service.dislike = dislike;
     return service;
      
     function like(story_id){
-      $http.post(`/api/stories/${story_id}/like`, {})
-        .then(res => { console.log(res); })
-    } 
+      return $http.post(`/api/stories/${story_id}/like`, {})
+        .then(res => { console.log(res); return res; })
+    }
+    
+    function dislike(story_id){
+      return $http.post(`/api/stories/${story_id}/dislike`, {})
+        .then(res => { console.log(res); return res; })
+    }
     
   });
