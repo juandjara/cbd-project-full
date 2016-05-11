@@ -12,5 +12,11 @@ angular.module('cbdProjectFullApp.story')
         templateUrl: 'app/story/edit/story_edit.html',
         controller: 'StoryEditController',
         controllerAs: 'vm'
+      })
+      .state('story_detail', {
+        url: '/story/:id',
+        templateUrl: 'app/story/detail/story_detail.html',
+        controller: 'StoryDetailController',
+        controllerAs: 'vm'
       });
   });

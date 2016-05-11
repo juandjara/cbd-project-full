@@ -8,7 +8,13 @@ var StorySchema = new mongoose.Schema({
   active: Boolean,
   likes:    [ mongoose.Schema.ObjectId ],
   dislikes: [ mongoose.Schema.ObjectId ],
-  visits:   [ mongoose.Schema.ObjectId ]    
+  visits:   [ mongoose.Schema.ObjectId ],
+  nodes:    [{
+    id:       { type: String, index: { unique: true } },
+    text:     String,
+    parent:   String, // id
+    children: [ String ] // [id]
+  }]
 });
 
 export default mongoose.model('Story', StorySchema);

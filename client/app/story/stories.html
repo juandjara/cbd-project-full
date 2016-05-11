@@ -11,9 +11,12 @@
   <ul class="list-group entity-list">
     <li class="list-group-item" ng-repeat="story in vm.stories" ng-show="story.active || vm.userIsAdmin()">
 	    <div class="entity-info">
-	        <strong uib-tooltip="id: {{story._id}}" tooltip-placement="right">
-            {{story.name}}
-          </strong><br>
+	        <a ui-state="story_detail" ui-state-params="{id: story._id }">
+            <strong uib-tooltip="id: {{story._id}}" tooltip-placement="right">
+              {{story.name}}
+            </strong>
+          </a>
+          <br>
 	        <span class="text-muted">{{story.info}}</span>
 	    </div>
       <a style="align-self: center; min-width: 3em;"

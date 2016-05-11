@@ -157,3 +157,23 @@ export function visit(req, res){
     })
     .catch(handleError(res));
 }
+
+// edit nodes
+// Add a "visit" to a Story
+export function nodes(req, res){
+  console.log("storiesController.nodes req params" + JSON.stringify(req.params));
+  console.log("storiesController.nodes req body" + JSON.stringify(req.body));
+    
+  return Story
+      .findOneAndUpdate(
+         { _id: req.params.id },
+         { nodes: req.body.nodes }
+       )
+      .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .then(function(entity){
+      
+    })
+    .catch(handleError(res));
+}
