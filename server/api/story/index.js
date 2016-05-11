@@ -13,5 +13,7 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 router.post('/:id/like', auth.isAuthenticated(), controller.like);
+router.post('/:id/dislike', auth.isAuthenticated(), controller.dislike);
+router.post('/:id/visit', auth.isAuthenticated(), controller.visit);
 
 module.exports = router;

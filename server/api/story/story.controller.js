@@ -107,7 +107,10 @@ export function like(req, res){
   return Story
       .findOneAndUpdate(
          { _id: req.params.id },
-         { $addToSet: { likes: req.user._id } }
+         { 
+           $pull: { dislikes: req.user._id }, 
+           $addToSet: { likes: req.user._id } 
+         }
        )
       .exec()
     .then(handleEntityNotFound(res))
@@ -118,4 +121,39 @@ export function like(req, res){
     .catch(handleError(res));
 }
 
+// Add a "dislike" to a Story
+export function dislike(req, res){
+  console.log("storiesController.dislike req params" + JSON.stringify(req.params));
+  return Story
+      .findOneAndUpdate(
+         { _id: req.params.id },
+         { 
+           $pull: { likes: req.user._id }, 
+           $addToSet: { dislikes: req.user._id } 
+         }
+       )
+      .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .then(function(entity){
+      
+    })
+    .catch(handleError(res));
+}
 
+// Add a "visit" to a Story
+export function visit(req, res){
+  console.log("storiesController.visit req params" + JSON.stringify(req.params));
+  return Story
+      .findOneAndUpdate(
+         { _id: req.params.id },
+         { $addToSet: { visits: req.user._id } }
+       )
+      .exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .then(function(entity){
+      
+    })
+    .catch(handleError(res));
+}
