@@ -1,6 +1,24 @@
-<div class="story">
-  <p>Name: {{vm.story.name}}</p>
-  <p>Info: {{vm.story.info}}</p>
-  <p>Likes: {{vm.story.likes.length}}</p>
-  <p>Dislikes: {{vm.story.dislikes.length}}</p>
+<div class="lg-bg full-height" style="padding-top: 1em">
+  <div class="card">
+    <h3>Historia</h3>
+    <hr> 
+    
+    <dl class="dl-horizontal">
+      <dt>Nombre</dt>
+      <dd>{{vm.story.name}} </dd>
+      
+      <dt>Info</dt>
+      <dd>{{vm.story.info}} </dd>
+      
+      <dt>Likes</dt>
+      <dd>{{vm.story.likes.length}} </dd>
+      
+      <dt>Dislikes</dt>
+      <dd>{{vm.story.dislikes.length}} </dd>
+    </dl>
+    <h3>Capítulos <strong>{{vm.story.nodes.length}} </strong> </h3>
+    <hr>
+    
+    
+  </div>
 </div>

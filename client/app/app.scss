@@ -14,6 +14,16 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
   padding: 0.2em 0;
 }
 
+.full-height{
+  height: 100%;
+}
+
+ui-view, [ui-view]{
+  margin-top: -70px;
+  padding-top: 50px;
+  padding-bottom: 90px;
+}
+
 // Component styles are injected through grunt
 /* inject:scss */
 @import 'admin/admin';
