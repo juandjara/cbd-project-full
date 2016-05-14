@@ -42,3 +42,15 @@ p.chapter-body{
   border-radius: 0;
 }
 
+@media(min-width: 768px){
+  .lector{
+    width: 50vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    
+    .body{
+      min-height: 100px;
+      padding: 1em;
+    }
+  }
+}
