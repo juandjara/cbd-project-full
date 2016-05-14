@@ -7,6 +7,7 @@ class StoryComponent {
     this.stories = Story.query();
     this.modals = $mdDialog;
     this.userIsAdmin = Auth.isAdmin;
+    this.userIsLogged = Auth.isLoggedIn;
     this.Story = Story;
   }
   

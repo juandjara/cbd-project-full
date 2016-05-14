@@ -12,7 +12,7 @@ var StorySchema = new mongoose.Schema({
   nodes:    [{
     id:       { type: String, index: { unique: true } },
     text:     String,
-    parent:   String, // id
+    title:    String,
     children: [ String ] // [id]
   }]
 });

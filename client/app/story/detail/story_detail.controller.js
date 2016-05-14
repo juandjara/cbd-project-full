@@ -10,7 +10,11 @@
     var vm = this;
     var id = $stateParams.id;
     
-    vm.story = Story.get({id: id});
+    activate();
+    
+    function activate(){
+      vm.story = Story.get({id: id});
+    }
     
   }
     

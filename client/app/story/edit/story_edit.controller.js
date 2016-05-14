@@ -26,7 +26,7 @@
         .then(story => {
           // story created, redirect to home
           console.log("StoryEditController created story "+angular.toJson(story));
-          $state.go('main');
+          $state.go('stories');
         })
         .catch(err => {
           err = err.data;

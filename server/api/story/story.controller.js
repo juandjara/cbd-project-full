@@ -159,7 +159,6 @@ export function visit(req, res){
 }
 
 // edit nodes
-// Add a "visit" to a Story
 export function nodes(req, res){
   console.log("storiesController.nodes req params" + JSON.stringify(req.params));
   console.log("storiesController.nodes req body" + JSON.stringify(req.body));

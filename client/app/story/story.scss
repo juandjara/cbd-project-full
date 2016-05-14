@@ -12,8 +12,8 @@ a[role=button]{
   padding: 1em;
 }
 
-@media(min-width: 768px){
-  .dl-horizontal{
+@media(min-width: 960px){
+  .story .dl-horizontal{
     dd{
       margin-left: 100px;
     }
@@ -22,3 +22,23 @@ a[role=button]{
     }
   }
 }
+
+.chapter-body{
+  resize: vertical;
+  padding-left: 3em;
+  min-height: 10em;
+}
+p.chapter-body{
+  padding-top: 0.7em;
+  padding-left: 3.5em;
+}
+
+.edit-textarea{
+  margin-bottom: -2.6em;
+  z-index: 999;
+}
+
+.no-br{
+  border-radius: 0;
+}
+

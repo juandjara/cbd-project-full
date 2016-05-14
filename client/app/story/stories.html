@@ -1,7 +1,7 @@
 <div class="container">
   <div layout="row">
     <md-button ui-sref="story_edit" class="md-icon-button md-raised md-primary" 
-               uib-tooltip="Nueva historia">
+               uib-tooltip="Nueva historia" ng-show="vm.userIsLogged()">
       <md-icon>add</md-icon>
     </md-button>
     <h3>Esta es la lista de historias.</h3>    
@@ -9,10 +9,11 @@
   <md-divider class="md-padding"></md-divider>
   <p ng-show="!vm.stories.length">No hay historias :c</p>
   <ul class="list-group entity-list">
-    <li class="list-group-item" ng-repeat="story in vm.stories" ng-show="story.active || vm.userIsAdmin()">
+    <li class="list-group-item" ng-repeat="story in vm.stories"
+        ng-show="story.active || vm.userIsAdmin()" style="border-bottom: 1px solid #eee">
 	    <div class="entity-info">
 	        <a href ui-state="'story_detail'" ui-state-params="{id: story._id }">
-            <strong uib-tooltip="id: {{story._id}}" tooltip-placement="right">
+            <strong>
               {{story.name}}
             </strong>
           </a>
@@ -21,20 +22,20 @@
 	    </div>
       <a style="align-self: center; min-width: 3em;"
          class="text-success" role="button" ng-click="vm.like(story)">
-        <i uib-tooltip="Like" class="fa fa-thumbs-o-up fa-2x"></i>
+        <i uib-tooltip="Like / Me gusta" class="fa fa-thumbs-o-up fa-2x"></i>
         <span class="fa-2x">{{story.likes.length}} </span>
       </a>
       
       <span style="min-width: 1em"></span>
       <a style="align-self: center; min-width: 3em;"
          class="text-danger" role="button" ng-click="vm.dislike(story)">
-        <i uib-tooltip="Dislike" class="fa fa-thumbs-o-down fa-2x"></i>
+        <i uib-tooltip="Dislike / No me gusta" class="fa fa-thumbs-o-down fa-2x"></i>
         <span class="fa-2x">{{story.dislikes.length}} </span>
       </a>
       &nbsp;
       
       <a style="padding-left: 1em;" ng-click="vm.confirmDelete($event, story)" class="trash">
-        <span uib-tooltip="Delete" class="fa fa-trash fa-2x"></span>
+        <span uib-tooltip="Eliminar" class="fa fa-trash fa-2x"></span>
       </a>
     </li>
   </ul>
