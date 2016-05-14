@@ -9,6 +9,7 @@
   function StoryDetailController(Story, $stateParams){
     var vm = this;
     var id = $stateParams.id;
+    vm.story = null;
     
     activate();
     

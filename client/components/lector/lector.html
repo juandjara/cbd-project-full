@@ -1,0 +1,9 @@
+<div class="lector">
+  <p ng-hide="vm.story.nodes.length">
+    No hay capitulos :c
+  </p>
+  <p>{{vm.currentNode.text}} </p>
+  <md-button class="md-primary" ng-repeat="child in vm.currentNode.children">
+    <span class="glyphicon glyphicon-chevron-right"></span> {{child.title}}  
+  </md-button>
+</div>

@@ -6,8 +6,9 @@ angular.module('cbdProjectFullApp.story')
       id: '@_id'
     });
     
-    service.like    = like;
-    service.dislike = dislike;
+    service.like      = like;
+    service.dislike   = dislike;
+    service.editNodes = editNodes;
     return service;
      
     function like(story_id){
@@ -17,6 +18,11 @@ angular.module('cbdProjectFullApp.story')
     
     function dislike(story_id){
       return $http.post(`/api/stories/${story_id}/dislike`, {})
+        .then(res => { console.log(res); return res; })
+    }
+    
+    function editNodes(story_id, nodes){
+      return $http.post(`/api/stories/${story_id}/nodes`, nodes)
         .then(res => { console.log(res); return res; })
     }
     
