@@ -9,7 +9,6 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 - [Git](https://git-scm.com/)
 - [Node.js and npm](nodejs.org) Node ^4.2.3, npm ^2.14.7
 - [Bower](bower.io) (`npm install --global bower`)
-- [Ruby](https://www.ruby-lang.org) and then `gem install sass`
 - [Gulp](http://gulpjs.com/) (`npm install --global gulp`)
 - [MongoDB](https://www.mongodb.org/) - Keep a running daemon with `mongod`
 
@@ -25,7 +24,7 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 ## Build & development
 
-Run `grunt build` for building and `grunt serve` for preview.
+Run `gulp build` for building and `gulp serve` for preview.
 
 ## Testing
 

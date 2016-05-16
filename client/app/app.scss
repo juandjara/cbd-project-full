@@ -25,7 +25,7 @@ ui-view, [ui-view]{
   padding-bottom: 90px;
 }
 */
-// Component styles are injected through grunt
+// Component styles are injected through gulp
 /* inject:scss */
 @import 'admin/admin';
 @import 'main/main';
