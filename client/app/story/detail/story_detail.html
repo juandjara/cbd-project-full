@@ -1,4 +1,4 @@
-<div class="story lg-bg full-height" style="margin-top: -20px; padding-top: 1em">
+<div class="container story lg-bg full-height" style="margin-top: -20px; padding-top: 1em">
   <div class="card">
     <h3 style="margin-top: 0.2em !important;">{{vm.story.name}} </h3>
     <dl class="dl-horizontal" style="padding-top: 1.5em; border-top: 1px solid #eee">
@@ -13,19 +13,15 @@
     </dl>
     <hr>
     <div class="lector">
-      <a ui-state="'node_edit'" ui-state-params="{id: vm.story._id }"
-         class="no-br btn btn-success">
-        <i class="fa fa-plus"></i> Añadir capitulo
-      </a>
       <p ng-hide="vm.story.nodes.length">
         No hay capitulos :c
       </p>
       <p ng-show="vm.story.nodes.length" class="body lg-bg">
-        {{vm.story.nodes[0].text}}
+        {{vm.currentNode}}
       </p>
       <md-button class="md-primary"
-                 ng-repeat="child_id in vm.story.nodes[0].children"
-                 ng-init="child = vm.getNode(child_id)"
+                 ng-repeat="child in vm.currentChildren"
+                 ng-click="vm.setNode(child)"
                  style="display: block; text-transform: none">
         <span class="glyphicon glyphicon-chevron-right"></span>
         {{child.title}}

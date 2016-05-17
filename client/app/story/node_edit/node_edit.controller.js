@@ -8,41 +8,64 @@
   /** @ngInject */  
   function NodeEditController(Story, $state, $stateParams){
     var vm = this;
+    var id = $stateParams.id;
     
-    vm.submitted = false;
-    vm.story = {};
-    vm.save = save;
-    vm.StoryRest = Story;
-    vm.story_id = $stateParams.id;
+    vm.story;
+    vm.currentNode = null;    
+    vm.currentLinks = [];
+    vm.newLink = "";
+
+    vm.getNode = getNode;    
+    vm.addNode = addNode;
+    vm.saveNode = saveNode;
+    vm.setNode = setNode;
+    vm.addLink = addLink;
     
-    function save(form){
-      vm.submitted = true;
-
-      if (form.$valid){
-        Story.save({
-          name: vm.story.name,
-          info: vm.story.info,
-          active: vm.story.active
-        }).$promise
-        .then(story => {
-          // story created, redirect to home
-          console.log("NodeEditController created story "+angular.toJson(story));
-          $state.go('node_edit', {id: story_id});
-        })
-        .catch(err => {
-          err = err.data;
-          this.errors = {};
-
-          // Update validity of form fields that match the mongoose errors
-          angular.forEach(err.errors, (error, field) => {
-            form[field].$setValidity('mongoose', false);
-            this.errors[field] = error.message;
-          });
-        });
-      }else{
-        console.log("NodeEditController recibio un form invalido!")
-      }
+    activate();
+    
+    function activate(){
+      vm.story = Story.get({id: id});
     }
+    
+    function getNode(id){
+      return vm.story.nodes.filter((node) => { 
+        return node.id === id 
+      })[0];
+    }
+    
+    function addNode(){
+      vm.currentNode = {
+        id: "S"+vm.story._id+"-N"+(vm.story.nodes.length+1),
+        text: "",
+        children: [],
+        title: "Capitulo raíz"
+      };
+      vm.newLink = "";
+    }
+    
+    function saveNode(){
+      var foundNode = vm.story.nodes.filter((node) => {
+        return node.id === vm.currentNode.id;
+      });
+      if(!foundNode.length) vm.story.nodes.push(vm.currentNode);
+      else{
+        var foundID = vm.story.nodes.indexOf(foundNode[0]);
+        vm.story.nodes[foundID] = vm.currentNode;
+      }
+      
+      Story.editNodes(vm.story._id, vm.story.nodes);
+    }
+    
+    function setNode(node){
+      vm.currentNode = node;
+    }
+    
+    function addLink(){
+      vm.currentNode.children.push(vm.newLink);
+    }
+    
+    
+    
   }
   
 })()

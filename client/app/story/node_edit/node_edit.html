@@ -1,47 +1,68 @@
-<div class="container">
-  <h1>Crear historia</h1>
-  <form layout="column" class="form" name="form" novalidate>
-    <md-input-container class="md-block"
-          ng-class="{ 'has-success': form.name.$valid && vm.submitted,
-                      'has-error': form.name.$invalid && vm.submitted }">
+<div class="container story lg-bg full-height" style="margin-top: -20px; padding-top: 1em">
+  <div class="card">
+    <h3 style="margin-top: 0.2em !important;">{{vm.story.name}} </h3>
+    <dl class="dl-horizontal" style="padding-top: 1.5em; border-top: 1px solid #eee">
+      <dt>Likes</dt>
+      <dd>{{vm.story.likes.length}} </dd>
       
-      <label>Nombre</label>
-      <input type="text" name="name" md-no-asterisk
-             ng-model="vm.story.name" required/>
-      <div ng-messages="form.name.$error">
-        <div ng-show="form.name.$error.required" ng-message="required">
-          La historia necesita un nombre
+      <dt>Dislikes</dt>
+      <dd>{{vm.story.dislikes.length}} </dd>
+      
+      <dt>Info</dt>
+      <dd>{{vm.story.info}} </dd>
+    </dl>
+    <hr>
+    <div layout="row">
+      <section flex="20">
+        <h3>Capitulos</h3>
+        <button class="btn btn-success" ng-click="vm.addNode()">
+          <span class="fa fa-plus"></span>
+          Nuevo capitulo 
+        </button>
+        <ul>
+          <li ng-repeat="node in vm.story.nodes">
+            <md-button ng-click="vm.setNode(node)">{{node.title}} </md-button>
+          </li>
+        </ul>
+      </section>
+      <section flex="80">
+        <header>
+          <h3>Editor</h3>
+          <button class="btn btn-success" ng-click="vm.saveNode()" ng-show="vm.currentNode">
+            <span class="fa fa-check"></span>
+            Guardar
+          </button>
+        </header>
+        <br>
+        <div ng-hide="vm.currentNode">
+          Selecciona un capitulo de la lista para editarlo o crea uno nuevo
         </div>
-      </div>
-      
-    </md-input-container>
-    <md-input-container class="md-block"
-          ng-class="{ 'has-success': form.info.$valid && vm.submitted,
-                      'has-error': form.info.$invalid && vm.submitted }">
-      
-      <label>Descripcion</label>
-      <input type="text" name="info" md-no-asterisk
-             ng-model="vm.story.info" required/>
-      <div ng-messages="form.info.$error">
-        <div ng-show="form.info.$error.required" ng-message="required">
-          Cuentanos algo sobre tu historia
+        <div ng-show="vm.currentNode">
+          Titulo: <input type="text" ng-model="vm.currentNode.title">
+          <textarea cols="80" rows="10" class="form-control" ng-model="vm.currentNode.text"></textarea>
+          <div class="input-group">
+            <select class="form-control" ng-model="vm.newLink">
+              <option ng-repeat="node in vm.story.nodes" value="{{node.id}}">
+                {{ node.title }}
+              </option>  
+            </select>
+            <div class="input-group-btn">
+              <button class="btn btn-success" ng-click="vm.addLink()">
+                <span class="fa fa-plus"></span>
+                Nuevo enlace
+              </button>
+            </div>
+          </div>
+          <h4 ng-show="vm.currentNode.children.length">Enalces</h4>
+          <div class="input-group" ng-repeat="link in vm.currentNode.children">
+            <select class="form-control" ng-model="link">
+              <option ng-repeat="node in vm.story.nodes" value="{{node.id}}">
+                {{ node.title }}
+              </option>  
+            </select>
+          </div>
         </div>
-      </div>
-      
-    </md-input-container>
-    <md-input-container class="md-block">
-      <md-checkbox type="checkbox" name="active" class="md-primary"
-              ng-model="vm.story.active" ng-init="vm.story.active=true">
-        Visible al público
-      </md-checkbox>
-    </md-input-container>
-    <div>
-      <input type="submit" class="lg-bg md-button md-primary" ng-click="vm.save(form)">
-      <a ui-sref="stories">
-        Cancelar
-      </a>
+      </section>
     </div>
-
-  </form>
-  <hr>
+  </div>
 </div>
