@@ -35,7 +35,8 @@
       &nbsp;
       
       <a style="padding-left: 1em; color: blue;" class="trash"
-         ui-state="'node_edit'" ui-state-params="{id: story._id }">
+         ui-state="'node_edit'" ui-state-params="{id: story._id }"
+         ng-if="vm.userIsLogged()">
         <span uib-tooltip="Editar" class="fa fa-pencil fa-2x"></span>
       </a>
       <a style="padding-left: 1em;" ng-click="vm.confirmDelete($event, story)" class="trash">
