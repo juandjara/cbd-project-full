@@ -166,7 +166,7 @@ export function nodes(req, res){
   return Story
       .findOneAndUpdate(
          { _id: req.params.id },
-         { nodes: req.body.nodes }
+         { nodes: req.body }
        )
       .exec()
     .then(handleEntityNotFound(res))

@@ -8,16 +8,23 @@
       <dt>Dislikes</dt>
       <dd>{{vm.story.dislikes.length}} </dd>
       
-      <dt>Info</dt>
+      <dt>Descripción</dt>
       <dd>{{vm.story.info}} </dd>
     </dl>
     <hr>
     <div class="lector">
+      <md-button class="md-primary"
+                 ng-show="vm.parents.length"
+                 ng-click="vm.goBack()"
+                 style="text-transform: none">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Atrás
+      </md-button>
       <p ng-hide="vm.story.nodes.length">
         No hay capitulos :c
       </p>
       <p ng-show="vm.story.nodes.length" class="body lg-bg">
-        {{vm.currentNode}}
+        {{vm.currentNode.text}}
       </p>
       <md-button class="md-primary"
                  ng-repeat="child in vm.currentChildren"
@@ -26,6 +33,9 @@
         <span class="glyphicon glyphicon-chevron-right"></span>
         {{child.title}}
       </md-button>
+      <p class="text-center" ng-hide="vm.currentChildren.length">
+        FIN
+      </p>
     </div>
   </div>
 </div>

@@ -12,9 +12,11 @@
     vm.story = null;
     vm.currentNode;
     vm.currentChildren;
+    vm.parents = [];
 
     vm.getNode = getNode;
     vm.setNode = setNode;    
+    vm.goBack  = goBack;
 
     activate();
     
@@ -24,6 +26,7 @@
         vm.currentNode = vm.story.nodes[0];
         vm.currentChildren = vm.currentNode? getChidlren(vm.currentNode, story) : [];        
       });
+      vm.parents = [];
     }
     
     function getNode(id){
@@ -33,8 +36,15 @@
     }
     
     function setNode(node){
+      vm.parents.push(vm.currentNode);
       vm.currentNode = node;
       vm.currentChildren = getChidlren(node, vm.story);
+    }
+    
+    function goBack(){
+      var parent = vm.parents.pop();
+      vm.currentNode = parent;
+      vm.currentChildren = getChidlren(parent, vm.story);
     }
     
     function getChidlren(_node, story){

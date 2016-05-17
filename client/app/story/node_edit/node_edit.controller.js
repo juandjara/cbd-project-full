@@ -38,7 +38,7 @@
         id: "S"+vm.story._id+"-N"+(vm.story.nodes.length+1),
         text: "",
         children: [],
-        title: "Capitulo raíz"
+        title: "Nuevo capitulo"
       };
       vm.newLink = "";
     }

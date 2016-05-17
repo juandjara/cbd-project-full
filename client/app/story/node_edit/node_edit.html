@@ -12,20 +12,20 @@
       <dd>{{vm.story.info}} </dd>
     </dl>
     <hr>
-    <div layout="row">
-      <section flex="20">
+    <div layout-gt-sm="row">
+      <section flex-gt-sm="20" class="editor-section">
         <h3>Capitulos</h3>
         <button class="btn btn-success" ng-click="vm.addNode()">
           <span class="fa fa-plus"></span>
           Nuevo capitulo 
         </button>
-        <ul>
+        <ul class="list-unstyled scrollx">
           <li ng-repeat="node in vm.story.nodes">
             <md-button ng-click="vm.setNode(node)">{{node.title}} </md-button>
           </li>
         </ul>
       </section>
-      <section flex="80">
+      <section flex="80" class="editor-section">
         <header>
           <h3>Editor</h3>
           <button class="btn btn-success" ng-click="vm.saveNode()" ng-show="vm.currentNode">
@@ -49,11 +49,11 @@
             <div class="input-group-btn">
               <button class="btn btn-success" ng-click="vm.addLink()">
                 <span class="fa fa-plus"></span>
-                Nuevo enlace
+                Añadir enlace
               </button>
             </div>
           </div>
-          <h4 ng-show="vm.currentNode.children.length">Enalces</h4>
+          <h4 ng-show="vm.currentNode.children.length">Enalces creados</h4>
           <div class="input-group" ng-repeat="link in vm.currentNode.children">
             <select class="form-control" ng-model="link">
               <option ng-repeat="node in vm.story.nodes" value="{{node.id}}">
