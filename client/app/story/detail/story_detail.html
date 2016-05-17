@@ -17,7 +17,7 @@
                  ng-show="vm.parents.length"
                  ng-click="vm.goBack()"
                  style="text-transform: none">
-        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="fa fa-chevron-left"></span>
         Atrás
       </md-button>
       <p ng-hide="vm.story.nodes.length">
@@ -30,7 +30,7 @@
                  ng-repeat="child in vm.currentChildren"
                  ng-click="vm.setNode(child)"
                  style="display: block; text-transform: none">
-        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="fa fa-chevron-right"></span>
         {{child.title}}
       </md-button>
       <p class="text-center" ng-hide="vm.currentChildren.length">
